@@ -33,7 +33,7 @@ function App() {
     try {
       const fetchData = async ()=> {
         const response = await fetch("https://restcountries.com/v3.1/all");
-        if(!response.ok){
+        if(!response){
           throw new Error('Failed to fetch countries data');
         } else {
           const data = await response.json();
