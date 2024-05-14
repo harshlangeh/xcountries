@@ -36,7 +36,7 @@ function App() {
       .then(data => setData(data));
       
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
     
   },[])
