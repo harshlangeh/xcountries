@@ -1,5 +1,4 @@
 
-import './App.css';
 import { useEffect, useState } from 'react';
 
 
@@ -42,6 +41,7 @@ function App() {
     
   },[])
 
+
   // console.log(data)
 
   
@@ -53,7 +53,7 @@ function App() {
       justifyContent: 'center',
       alignItems: 'center' 
     }}>
-      {data.map((item) => (<Tile flagUrl={item.flags.png} name={item.name.common} altFlag={item.flags.alt}/>))}
+      {data && data.map((item) => <Tile flagUrl={item.flags.png} name={item.name.common} altFlag={item.flags.alt} key={item.name.common}/>)}
     </div>
   );
 }
