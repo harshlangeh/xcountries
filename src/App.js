@@ -31,13 +31,22 @@ function App() {
 
   useEffect(()=>{
     try {
-      fetch("https://restcountries.com/v3.1/all")
-      .then(res => res.json())
-      .then(data => setData(data));
-      
+      const fetchData = async ()=> {
+        const response = await fetch("https://restcountries.com/v3.1/all");
+        if(!response.ok){
+          throw new Error('Failed to fetch countries data');
+        } else {
+          const data = await response.json();
+          setData(data)
+        }  
+      }
+      fetchData()
+      // fetch("https://restcountries.com/v3.1/all")
+      // .then(res => res.json())
+      // .then(data => setData(data));  
     } catch (error) {
       console.error(error)
-    }
+    } 
     
   },[])
 
