@@ -27,6 +27,7 @@ const Tile = ({flagUrl, name, altFlag}) => {
 
 function App() {
     const [data, setData] = useState(null)
+    const [error, setError] = useState(null)
 
 
   useEffect(()=>{
@@ -45,6 +46,7 @@ function App() {
       // .then(res => res.json())
       // .then(data => setData(data));  
     } catch (error) {
+      setError(error.message)
       console.error(error)
     } 
     
@@ -62,7 +64,8 @@ function App() {
       justifyContent: 'center',
       alignItems: 'center' 
     }}>
-      {data && data.map((item) => <Tile flagUrl={item.flags.png} name={item.name.common} altFlag={item.flags.alt} key={item.name.common}/>)}
+      {error && <p>Error: {error}</p>}
+      {data && data.map((item, i) =>  <Tile flagUrl={item.flags.png} name={item.name.common} altFlag={item.flags.alt} key={item.name.common}/>)}
     </div>
   );
 }
